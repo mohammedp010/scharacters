@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CharacterCard from './characterCard';
 import CharacterModal from './characterModal';
-import { Box, Heading, Flex, Spinner, Button } from '@chakra-ui/react';
+import { Box, Heading, Flex, Spinner, Button, Text } from '@chakra-ui/react';
 
 const CharacterList = () => {
   const [characters, setCharacters] = useState([]);
@@ -16,7 +16,9 @@ const CharacterList = () => {
     try {
       const response = await axios.get(`https://swapi.dev/api/people/?page=${page}`);
       setCharacters(response.data.results);
+      setError(null);
     } catch (error) {
+      setCharacters([]);
       setError(error.message || 'An error occurred while fetching data.');
     } finally {
       setIsLoading(false);
@@ -48,6 +50,15 @@ const CharacterList = () => {
       <Heading color="white" as="h1" size="xl" mb={4} ml="549" mr="-549">
         Star War Characters
       </Heading>
+
+      {error && (
+        <Box mb={4} ml="549" mr="-549" >
+          <Heading as='h2' size='2xl' color='red.500'>
+            Something Went Wrong!
+          </Heading>
+          <Text color="red.500">{error}</Text>
+        </Box>
+      )}
 
       {loading ? (
         <Spinner size="xl" mb={4} ml="549" mr="-549" color="white" />

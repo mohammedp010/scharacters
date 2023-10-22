@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Image, Stack, Heading, Text, Button, ButtonGroup, Divider, useColorModeValue } from '@chakra-ui/react';
+import { Box,Stack, Heading, Text, Button, ButtonGroup, useColorModeValue } from '@chakra-ui/react';
 
 const CharacterCard = ({ character, onClick }) => {
   const cardBgColor = useColorModeValue('white', 'gray.700');
