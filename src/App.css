@@ -1,12 +1,15 @@
 
 .App {
   text-align: center;
-  background-image: url('./images/bg.jpg'); /* Adjust the path accordingly */
+  background-image: url('./images/bg.jpg');
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;   
+  min-height: 100vh;
   display: flex;
-  
-                                                
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;                                        
 }
 
 .App-logo {
